@@ -1,8 +1,8 @@
-resource "proxmox_vm_qemu" "kube-agent-jarvis" {
+resource "proxmox_vm_qemu" "kube-agent" {
   count                  = 2
-  name                   = "kube-agent-jarvis-0${count.index + 1}"
-  vmid                   = "41${count.index + 1}"
-  ipconfig0              = "ip=${var.ip}.21${count.index + 1}/24,gw=${var.gateway}"
+  name                   = "kube-agent-ultron-0${count.index + 1}"
+  vmid                   = "50${count.index + 1}"
+  ipconfig0              = "ip=${var.ip}.4${count.index + 1}/24,gw=${var.gateway}"
   agent                  = 1
   balloon                = 1
   sockets                = 4
@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "kube-agent-jarvis" {
   scsihw                 = "virtio-scsi-single"
   searchdomain           = "Home"
   tablet                 = true
-  target_node            = "jarvis"
+  target_node            = "ultron"
   vcpus                  = 0
   disk {
     size    = var.storage_size

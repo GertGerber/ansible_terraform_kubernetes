@@ -1,8 +1,8 @@
 #!/bin/bash
 # Thanks to this guide https://github.com/UntouchedWagons/Ubuntu-CloudInit-Docs
 # Constants
-CLOUD_IMAGE_URL="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
-VM_ID=9000
+CLOUD_IMAGE_URL="https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
+VM_ID=8200
 VM_NAME="ubuntu-jammy-cloudinit-template"
 MEMORY=2048
 CORES=2
@@ -13,9 +13,11 @@ DISK_ID="vm-${VM_ID}-disk-0"
 BOOT_DISK="scsi0"
 CLOUD_INIT_DISK="local-lvm:cloudinit"
 
+set -x
+rm -f noble-server-cloudimg-amd64.img
 # Download preferred cloud image
-wget "$CLOUD_IMAGE_URL"
-
+wget -q --show-progress "$CLOUD_IMAGE_URL"
+sudo qm destroy $VM_ID
 # Install libguestfs-tools only if not already installed
 if ! command -v virt-customize &> /dev/null; then
     sudo apt update -y

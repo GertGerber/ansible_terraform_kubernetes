@@ -1,8 +1,8 @@
-resource "proxmox_vm_qemu" "kube-agent" {
-  count                  = 2
-  name                   = "kube-agent-ultron-0${count.index + 1}"
-  vmid                   = "50${count.index + 1}"
-  ipconfig0              = "ip=${var.ip}.15${count.index + 1}/24,gw=${var.gateway}"
+resource "proxmox_vm_qemu" "kube-server" {
+  count                  = 1
+  name                   = "kube-server-0${count.index + 1}"
+  vmid                   = "40${count.index + 1}"
+  ipconfig0              = "ip=${var.ip}.3${count.index + 1}/24,gw=${var.gateway}"
   agent                  = 1
   balloon                = 1
   sockets                = 4

@@ -80,9 +80,9 @@
         update_cache: yes
       vars:
         packages:
-          - kubelet=1.23.6-00
-          - kubeadm=1.23.6-00
-          - kubectl=1.23.6-00
+          - kubelet=1.30.3-00
+          - kubeadm=1.30.3-00
+          - kubectl=1.30.3-00
 
     # Task 12-14: Hold Kubernetes Binary Versions and Restart kubelet
     - name: hold kubernetes binary versions (prevent from being updated)
